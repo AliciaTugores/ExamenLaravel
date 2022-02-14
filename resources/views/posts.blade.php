@@ -1,50 +1,94 @@
-
+<!DOCTYPE html>
 <html>
     <body>
         <form action="{{ route('posts.store') }}" method ="POST">
             @csrf
 
+            <div>
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li class="text-danger">
+                            {{ $error }}
+                        </li>
+                    </ul>
+                <br />
+                @endforeach
+            <div> 
+
             <label>
-                {{__("título")}}
-                Título de la publicación:
-                <input type="text" name="título" value="{{ old('título')}}" placeholder="Ingresa aquí el título de la publicación" >
+                <!-- {{__("título")}}  para luego añadir soporte multilingüe-->
+                <b>Tittle of the post:</b>   <!--lo pongo en inglés para que se vea la traducción porque ya lo puse todo en español -->
                 <br/>
-            </label>
-            <br>
-            <label>
-                Extracto publicación:
-                <input type="text" name="extracto" value="{{ old('extracto')}}" placeholder="Ingresa un extracto de la publicación">
-                <br/>  
-            </label>
-            <br>
-            <label>
-                Contenido publicación:
-                <input type="text" name="contenido" value="{{ old('contenido')}}" placeholder="Ingresa el contenido de la publicación">
+                <input type="text" name="título" value="{{ old('título') }}" size="50" placeholder="Ingresa aquí el título de la publicación" >
                 <br/>
+                @error('título')
+                    <br/>
+                    <small class="text-danger">*{{$message}}</small>
+                    <br/>
+                @enderror
             </label>
-            <br>
+            <br/>
             <label>
-                Caducable:
-                <input type="checkbox" name="caducable">
+                <b>Extracto publicación:</b>
                 <br/>
-            </label>
-            <br>
-            <label>
-                Comentable:
-                <input type="checkbox" name="comentable">
+                <input type="text" name="extracto" value="{{ old('extracto') }}" size="50" placeholder="Ingresa un extracto de la publicación">
                 <br/>
+                @error('extracto')
+                    <br/>
+                    <small class="text-danger">*{{$message}}</small>
+                    <br/>
+                @enderror   
             </label>
-            <br>
+            <br/>
             <label>
-                Acceso:
-                <select name="acceso" name="acceso" value="{{ old('acceso')}}">
-                    <option value="privado">privado</option>
-                    <option value="público">público</option>
+                <b>Contenido publicación:</b>
+                <br/>
+                <textarea type="textarea" name="contenido" value="{{ old('contenido') }}" rows="5" cols="50" placeholder="Ingresa el contenido de la publicación"></textarea>
+                <br/>
+                @error('contenido')
+                    <br/>
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br/>
+                @enderror
+            </label>
+            <br/>
+            <label>
+                <b>Caducable:</b>
+                <input type="checkbox" name="caducable" value="1" @if (old('caducable') === '1') checked @endif>
+                <br/>
+                @error('caducable')
+                    <br/>
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br/>
+                @enderror
+            </label>
+            <br/>
+            <label>
+                <b>Comentable:</b>
+                <input type="checkbox" name="comentable" value="1" @if (old('comentable') === '1') checked @endif>
+                <br/>
+                @error('comentable')
+                    <br/>
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br/>
+                @enderror
+            </label>
+            <br/>
+            <label>
+                <b>Acceso:</b>
+                <select name="acceso" name="acceso" value="{{ old('acceso') }}">
+                    <option value="privado" {{ old("acceso") == "privado" ? "selected" : "" }}>privado</option>
+                    <option value="público" {{ old("acceso") == "público" ? "selected" : "" }}>público</option>
                 </select>
+                @error('acceso')
+                    <br/>
+                    <small class="text-danger">*{{ $message }}</small>
+                    <br/>
+                @enderror
             </label>
-            <br>
-            <br>
-            <input type="submit" value="Crear">
+            <br/>
+            <br/>
+            <input type="submit" value="Crear Post">
         </form>
     </body>
 </html>
