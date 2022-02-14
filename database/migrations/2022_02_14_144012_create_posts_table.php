@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
             $table->string("título");
             $table->string("extracto");
             $table->string("contenido");
-            $table->boolean("caducable")->nullable();
-            $table->boolean("comentable")->nullable();
+            $table->boolean("caducable")->nullable()->default(0);
+            $table->boolean("comentable")->nullable()->default(0);
             $table->enum("acceso", ["privado", "público"]);
             $table->timestamps();
         });
