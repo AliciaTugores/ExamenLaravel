@@ -34,6 +34,13 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        
+        $request->validate([
+            'título' => 'required|unique:posts',
+            'extracto' => 'required',
+            'contenido' => 'required',
+            'acceso' => 'required',
+        ]);
 
         $post = new Post();
 
