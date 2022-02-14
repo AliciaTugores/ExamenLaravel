@@ -18,7 +18,7 @@
             <label>
                 <b>{{__("título")}}:</b>
                 <br/>
-                <input type="text" name="título" value="{{ old('título') }}" size="50" placeholder="Ingresa aquí el título de la publicación" >
+                <input type="text" name="título" value="{{ old('título') }}" size="50" placeholder="Ingresa aquí el título de la publicación" required>
                 <br/>
                 @error('título')
                     <br/>
@@ -30,7 +30,7 @@
             <label>
                 <b>Extracto publicación:</b>
                 <br/>
-                <input type="text" name="extracto" value="{{ old('extracto') }}" size="50" placeholder="Ingresa un extracto de la publicación">
+                <input type="text" name="extracto" value="{{ old('extracto') }}" size="50" placeholder="Ingresa un extracto de la publicación" required>
                 <br/>
                 @error('extracto')
                     <br/>
@@ -42,7 +42,7 @@
             <label>
                 <b>Contenido publicación:</b>
                 <br/>
-                <textarea type="textarea" name="contenido" rows="5" cols="50" placeholder="Ingresa el contenido de la publicación">{{ old('contenido') }}</textarea>
+                <textarea type="textarea" name="contenido" rows="5" cols="50" placeholder="Ingresa el contenido de la publicación" required>{{ old('contenido') }}</textarea>
                 <br/>
                 @error('contenido')
                     <br/>
