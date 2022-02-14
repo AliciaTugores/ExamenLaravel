@@ -16,8 +16,7 @@
             <div> 
 
             <label>
-                <!-- {{__("título")}}  para luego añadir soporte multilingüe-->
-                <b>Tittle of the post:</b>   <!--lo pongo en inglés para que se vea la traducción porque ya lo puse todo en español -->
+                <b>{{__("título")}}:</b>
                 <br/>
                 <input type="text" name="título" value="{{ old('título') }}" size="50" placeholder="Ingresa aquí el título de la publicación" >
                 <br/>
@@ -43,7 +42,7 @@
             <label>
                 <b>Contenido publicación:</b>
                 <br/>
-                <textarea type="textarea" name="contenido" value="{{ old('contenido') }}" rows="5" cols="50" placeholder="Ingresa el contenido de la publicación"></textarea>
+                <textarea type="textarea" name="contenido" rows="5" cols="50" placeholder="Ingresa el contenido de la publicación">{{ old('contenido') }}</textarea>
                 <br/>
                 @error('contenido')
                     <br/>
